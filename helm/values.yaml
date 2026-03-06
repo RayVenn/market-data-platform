@@ -1,0 +1,22 @@
+namespace: market-data
+
+timescaledb:
+  url: jdbc:postgresql://timescaledb:5432/binance
+  username: postgres
+  password: password
+
+kafka:
+  bootstrapServers: kafka:29092
+
+images:
+  apiServer:
+    repository: market-data-api-server
+    tag: latest
+    pullPolicy: IfNotPresent
+  frontend:
+    repository: market-data-frontend
+    tag: latest
+    pullPolicy: IfNotPresent
+
+frontend:
+  nodePort: 30420

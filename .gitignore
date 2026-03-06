@@ -1,0 +1,48 @@
+# Gradle
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+*.jar
+*.war
+*.ear
+
+# Java
+*.class
+*.log
+*.ctxt
+.mtj.tmp/
+hs_err_pid*
+
+# Spring Boot
+target/
+api-server/bin/
+
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# VS Code
+.vscode/
+
+# Eclipse
+.classpath
+.project
+.settings/
+bin/
+
+# Node.js / Angular
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+
+# Environment
+.env
+!.env.example
+
+# macOS
+.DS_Store
+
+# Docker
+docker-compose.override.yml
