@@ -1,5 +1,5 @@
 # ── Stage 1: build bootJar ────────────────────────────────────────────────────
-FROM eclipse-temurin:17-jdk AS builder
+FROM eclipse-temurin:21-jdk AS builder
 
 WORKDIR /app
 
@@ -12,7 +12,7 @@ COPY api-server/src api-server/src
 RUN ./gradlew :api-server:bootJar --no-daemon
 
 # ── Stage 2: minimal JRE runtime ─────────────────────────────────────────────
-FROM eclipse-temurin:17-jre-jammy
+FROM eclipse-temurin:21-jre-jammy
 
 WORKDIR /app
 

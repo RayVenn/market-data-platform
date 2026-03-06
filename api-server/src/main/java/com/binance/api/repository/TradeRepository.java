@@ -3,8 +3,10 @@ package com.binance.api.repository;
 import com.binance.api.model.TradeDto;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Repository;
 
+import java.sql.ResultSet;
 import java.util.List;
 
 @Repository
@@ -27,8 +29,8 @@ public class TradeRepository {
         return jdbc.query(sql, tradeRowMapper(), symbol, limit);
     }
 
-    private RowMapper<TradeDto> tradeRowMapper() {
-        return (rs, rowNum) -> {
+    private @NonNull RowMapper<TradeDto> tradeRowMapper() {
+        return (@NonNull ResultSet rs, int rowNum) -> {
             TradeDto t  = new TradeDto();
             t.tradeTime = rs.getTimestamp("trade_time").toInstant().toString();
             t.symbol    = rs.getString("symbol");

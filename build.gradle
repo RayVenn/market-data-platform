@@ -1,13 +1,14 @@
 plugins {
     id 'org.springframework.boot' version '3.3.2' apply false
-    id 'io.spring.dependency-management' version '1.1.5' apply false
 }
+
+group = 'com.marketdata'
 
 subprojects {
     apply plugin: 'java'
     java {
-        sourceCompatibility = '17'
-        targetCompatibility = '17'
+        sourceCompatibility = '21'
+        targetCompatibility = '21'
     }
     repositories {
         mavenCentral()

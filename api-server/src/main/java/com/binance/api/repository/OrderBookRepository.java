@@ -7,7 +7,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.postgresql.util.PGobject;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Repository;
+
+import java.sql.ResultSet;
 
 import java.util.List;
 
@@ -32,8 +35,8 @@ public class OrderBookRepository {
         return jdbc.query(sql, orderbookRowMapper(), symbol);
     }
 
-    private RowMapper<OrderBookDto> orderbookRowMapper() {
-        return (rs, rowNum) -> {
+    private @NonNull RowMapper<OrderBookDto> orderbookRowMapper() {
+        return (@NonNull ResultSet rs, int rowNum) -> {
             OrderBookDto dto   = new OrderBookDto();
             dto.snapshotTime   = rs.getTimestamp("snapshot_time").toInstant().toString();
             dto.symbol         = rs.getString("symbol");
