@@ -1,0 +1,33 @@
+<div class="order-book">
+  <h3>Order Book — {{ symbol }}</h3>
+
+  @if (exchanges.length === 0) {
+    <div class="empty">Waiting for order book data…</div>
+  }
+
+  @for (exchange of exchanges; track exchange) {
+    <div class="exchange-book">
+      <div class="exchange-label">{{ exchange }}</div>
+
+      <div class="levels asks">
+        @for (level of topAsks(orderBooks.get(exchange)!); track level.price) {
+          <div class="level">
+            <span class="qty">{{ level.quantity | number:'1.4-4' }}</span>
+            <span class="price ask">{{ level.price | number:'1.2-2' }}</span>
+          </div>
+        }
+      </div>
+
+      <div class="spread-line">— spread —</div>
+
+      <div class="levels bids">
+        @for (level of topBids(orderBooks.get(exchange)!); track level.price) {
+          <div class="level">
+            <span class="qty">{{ level.quantity | number:'1.4-4' }}</span>
+            <span class="price bid">{{ level.price | number:'1.2-2' }}</span>
+          </div>
+        }
+      </div>
+    </div>
+  }
+</div>

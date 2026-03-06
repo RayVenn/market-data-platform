@@ -1,0 +1,19 @@
+<div class="app-container">
+  <header class="app-header">
+    <span class="title">Crypto Market Data</span>
+    <select [(ngModel)]="selectedSymbol" class="symbol-select">
+      @for (s of symbols; track s) {
+        <option [value]="s">{{ s }}</option>
+      }
+    </select>
+  </header>
+
+  <main class="panels">
+    <aside class="panel panel-left">
+      <app-order-book [symbol]="selectedSymbol" />
+    </aside>
+    <section class="panel panel-right">
+      <app-trade-feed [symbol]="selectedSymbol" />
+    </section>
+  </main>
+</div>

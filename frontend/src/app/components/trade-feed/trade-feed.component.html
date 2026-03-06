@@ -1,0 +1,25 @@
+<div class="trade-feed">
+  <h3>Trade Feed — {{ symbol }}</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Time</th>
+        <th>Exchange</th>
+        <th>Price</th>
+        <th>Qty</th>
+        <th>Side</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (t of trades; track t.tradeId) {
+        <tr [class.buy]="isBuy(t)" [class.sell]="!isBuy(t)">
+          <td>{{ t.tradeTime | date:'HH:mm:ss.SSS' }}</td>
+          <td>{{ t.source }}</td>
+          <td>{{ t.price | number:'1.2-2' }}</td>
+          <td>{{ t.quantity | number:'1.4-4' }}</td>
+          <td class="side">{{ t.side }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
