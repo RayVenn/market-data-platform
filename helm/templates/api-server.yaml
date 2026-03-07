@@ -57,7 +57,8 @@ metadata:
 spec:
   selector:
     app: api-server
-  type: ClusterIP
+  type: NodePort
   ports:
     - port: 8090
       targetPort: 8090
+      nodePort: {{ .Values.apiServer.nodePort }}

@@ -18,5 +18,8 @@ images:
     tag: latest
     pullPolicy: IfNotPresent
 
+apiServer:
+  nodePort: 30090
+
 frontend:
   nodePort: 30420
